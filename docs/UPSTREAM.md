@@ -424,6 +424,26 @@ On Plex it clears their bar on the stick.
   Emby go in. Then name the commit; they'd import it into `roku/` with this
   history, sign it, and put it up as a beta.
 
+[Replied](https://github.com/chadMueller/Nostalgex/discussions/8#discussioncomment-19078343)
+on 2026-10-20, leading with every item on their beta list in `7bde5df`,
+proposed as the commit to import once it passes on their stick.
+- **Not yet checked, asked of them or left for us:** a phone scanning the
+  sign-in QR, and sync after a mid-programme join on Emby with TS.
+- **Upstream to `1b5859b`:** v43 with `2d1e237`'s filter rules, episode air
+  dates and Emby's DV profile in the loaders, all 87 `filter-golden.json`
+  cases, `season-golden.json` (SPOTLIGHTED NOV 19 TO DEC 31 seen on the
+  43S45), and the pool-build season gate that `8160f04` had dropped. Emby
+  H.264 as TS and DV5 off every channel, neither on a TV yet.
+- **Not ported:** the burn-in changes (no PlaybackInfo here), the EAC3 cap
+  and dvh1 signalling; asked whether they want any anyway.
+- **Their asks and new items:** the QR code (matched to a reference encoder);
+  the guide notice, seen; queued switches as two builds from three on the
+  43S45; a same-day relaunch keeping its schedules (1.25 s); the server
+  on-and-off compare, unpressed.
+- **Also:** RetroLook, sca-cmd clean (`27d0c80` reproduces their four
+  warnings), and caches keyed on a hash of the zip, with a one-time rescan
+  (201 s on the 43S45).
+
 ## Channel ideas: Discussion #29
 
 [Posted](https://github.com/chadMueller/Nostalgex/discussions/29) on
