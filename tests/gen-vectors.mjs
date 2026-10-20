@@ -7,14 +7,15 @@
 //   node tests/gen-vectors.mjs            # write tests/vectors/{schedule,filter,lineup,franchise,enrichment,collections,mediabrowser}.json
 //   node tests/gen-vectors.mjs --check    # fail if the file is stale
 //
-// Upstream clone: $NOSTALGEX_DIR, default ../nostalgex next to this repo.
+// Upstream clone: $NOSTALGEX_DIR, default ../nostalgex next to this repo (or
+// next to the personal repo, whose roku/ submodule this may be).
 // Every number in the output fits a 32-bit Integer, and 64-bit values travel as
 // hex strings, so the Roku's ParseJson reads them without loss.
 // The filter's date rules run in local time; pin it so the vectors don't
 // depend on where they were generated.
 process.env.TZ = "UTC";
 import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { filterVectors } from "./gen-filter.mjs";
@@ -25,7 +26,9 @@ import { collectionsVectors } from "./gen-collections.mjs";
 import { mediaBrowserVectors } from "./gen-mediabrowser.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const upstream = resolve(process.env.NOSTALGEX_DIR || join(here, "..", "..", "nostalgex"));
+// Inside the personal repo's roku/ submodule the clone is one level further up.
+const sibling = join(here, "..", "..", "nostalgex");
+const upstream = resolve(process.env.NOSTALGEX_DIR || (existsSync(join(sibling, ".git")) ? sibling : join(here, "..", "..", "..", "nostalgex")));
 const out = join(here, "vectors", "schedule.json");
 const commit = execFileSync("git", ["-C", upstream, "rev-parse", "HEAD"]).toString().trim();
 const engine = join(upstream, "scripts", "nostalgex-daily-manifest.js");

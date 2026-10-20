@@ -51,7 +51,9 @@ curl -d '' "http://<tv>:8060/input?contentId=12&mediaType=live"     # while runn
 
 ## Security
 
-- **Sign-in is plex.tv's link code.** The TV never sees your Plex password.
+- **Sign-in is plex.tv's link code**, typed in or scanned from the QR code
+  beside it. The TV never sees your Plex password, and draws the QR itself,
+  so the code goes to no QR service.
 - **The Plex token stays on the TV**, in this app's private registry section.
   It is never written to the repo, to logs, or to the debug console (port
   8085), which anyone on the network can read. `tests/run.sh` fails if a

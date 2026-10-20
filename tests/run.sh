@@ -9,7 +9,9 @@
 # data/UPSTREAM, and warns when the clone's origin/main has moved past it.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+# Inside the personal repo's roku/ submodule the clone is two levels up.
 upstream=${NOSTALGEX_DIR:-../nostalgex}
+[ -n "${NOSTALGEX_DIR:-}" ] || [ -d "$upstream/.git" ] || [ ! -d ../../nostalgex/.git ] || upstream=../../nostalgex
 pinned=$(sed -nE 's/^commit ([0-9a-f]{40}).*/\1/p' data/UPSTREAM)
 if [ -d "$upstream/.git" ]; then
     git -C "$upstream" cat-file -e "$pinned^{commit}" 2>/dev/null || {
