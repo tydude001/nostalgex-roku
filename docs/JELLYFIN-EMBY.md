@@ -177,8 +177,22 @@ servers, driven over ECP.
   file that may be HEVC stays fMP4. Upstream tried it on a Streaming Stick
   Plus against Emby 4.10.1 (Discussion #8, 2026-10-20): an H.264 + DTS file
   joined 48 s in asked for `SegmentContainer=ts`, Emby copied the video and
-  converted DTS to AAC, and the picture came up in 1.6 s. Sync after the join
-  is not yet checked on a Roku.
+  converted DTS to AAC, and the picture came up in 1.6 s.
+- **The TS stream is in sync after a join; fMP4 is not** (measured
+  2026-10-20 against the lab Emby 4.10.1, H.264 + 5.1 DTS MKV). The stream
+  was asked for as the port asks, and the first segment from each join was
+  taken. Each track was then placed in the source: the copied video's
+  packets matched the file's frame for frame, and the AAC was
+  cross-correlated with the file's own audio. Sound against picture:
+  - TS, joined at 247 s (no seek, `segment` muxer, `-copyts`): 0 ms;
+  - TS, joined at 1,500 s (`-ss 00:25:00`, picture from the keyframe 7.5 s
+    earlier): -1 ms;
+  - fMP4, joined at 247 s (`hls` muxer, both tracks from zero): -2,048 ms,
+    the sound early, as upstream found.
+
+  ffprobe's stream `start_time` on these TS segments reports the video's
+  start for the audio too; read the first audio packet's pts. Not yet
+  watched on a Roku.
 
 ## How it fits the app
 
