@@ -444,6 +444,33 @@ proposed as the commit to import once it passes on their stick.
   warnings), and caches keyed on a hash of the zip, with a one-time rescan
   (201 s on the 43S45).
 
+[Answered](https://github.com/chadMueller/Nostalgex/discussions/8#discussioncomment-19085117)
+on 2026-10-20: `7bde5df` passes on the Streaming Stick Plus (Plex, 11,687
+items) and is the one they'll import.
+- **Checked on the stick:**
+  - The one-time rescan, with the guide up at 101 s (scan 18 s, build 53 s).
+  - TIS THE SEASON: the BUILDING notice at once, channels 20 s after the
+    press, SPOTLIGHTED NOV 19 TO DEC 31.
+  - Queued switches: 3 in 5 s made 2 builds, and off-and-on during a build
+    answered `the guide already has it`.
+  - A same-day relaunch: guide 0.7 s, AppLaunchComplete 1.1 s, schedules
+    kept.
+  - 20 channel changes all played: HLS 1.4 to 4.0 s, direct MP4 3.5 to
+    6.0 s, memory at most 51%, no crash.
+  - sca-cmd clean, and every test passed on the stick.
+- **Our two:**
+  - The QR reads right, followed two code refreshes, and their phone
+    signed the stick in.
+  - Emby 4.10.1 with TS joined 48 s in: video copied, DTS to AAC, picture
+    in 1.6 s. Sync not yet checked by eye.
+- **Small, none blocking:**
+  - Back on the live row goes to Home; a confirm is our call.
+  - Jellyfin and Emby rescan every launch.
+  - The screensaver still pauses the app.
+  - The QR's quiet zone is about 2 modules.
+- **Next on their side:** import `7bde5df` into `roku/` with its history,
+  sign it, and put up the beta, staged the way `deploy.sh` does.
+
 ## Channel ideas: Discussion #29
 
 [Posted](https://github.com/chadMueller/Nostalgex/discussions/29) on
