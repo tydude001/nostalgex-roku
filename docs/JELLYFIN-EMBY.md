@@ -190,9 +190,7 @@ servers, driven over ECP.
   - fMP4, joined at 247 s (`hls` muxer, both tracks from zero): -2,048 ms,
     the sound early, as upstream found.
 
-  ffprobe's stream `start_time` on these TS segments reports the video's
-  start for the audio too; read the first audio packet's pts. Not yet
-  watched on a Roku.
+  Each track's start is its first packet's pts. Not yet watched on a Roku.
 
 ## How it fits the app
 
