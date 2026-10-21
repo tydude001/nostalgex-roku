@@ -1,5 +1,10 @@
 # nostalgex-roku
 
+> **This repository is archived.** The port now lives in
+> [`roku/`](https://github.com/chadMueller/Nostalgex/tree/main/roku) in
+> upstream Nostalgex, imported with this history on 2026-10-20. Open issues and
+> pull requests there. What follows describes the port as it stood here.
+
 A Roku port of [Nostalgex](https://github.com/chadMueller/Nostalgex), the
 retro live-TV channel guide for your own media library. The upstream project
 ships an Apple TV app and a browser tuner, and Roku is
