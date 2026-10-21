@@ -471,6 +471,17 @@ items) and is the one they'll import.
 - **Next on their side:** import `7bde5df` into `roku/` with its history,
   sign it, and put up the beta, staged the way `deploy.sh` does.
 
+[Replied](https://github.com/chadMueller/Nostalgex/discussions/8#discussioncomment-19086119)
+on 2026-10-20: `7bde5df` it is, with only tests and docs after it. The four
+small ones stay as upstream has them unless they change theirs:
+- Back on the live row follows `GuideExitAction`.
+- Jellyfin and Emby have no library signature (`currentLibrarySignature`
+  is Plex-only).
+- The screensaver is kept off by playback, as their idle timer is.
+- The QR's 2-module quiet zone was deliberate; we offered 4 if they want it.
+
+Emby sync after a join on TS is ours to check.
+
 ## Channel ideas: Discussion #29
 
 [Posted](https://github.com/chadMueller/Nostalgex/discussions/29) on
