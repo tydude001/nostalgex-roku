@@ -174,7 +174,11 @@ servers, driven over ECP.
   GOP (H.264 + DTS joined at 247 s: -1,720 ms on fMP4, +35 ms on TS). TS
   segments carry the source timestamps. The port now asks Emby for TS when
   the video is H.264, as upstream's `embySegmentContainer` (`72c844d`); a
-  file that may be HEVC stays fMP4. Not yet checked for sync on a Roku.
+  file that may be HEVC stays fMP4. Upstream tried it on a Streaming Stick
+  Plus against Emby 4.10.1 (Discussion #8, 2026-10-20): an H.264 + DTS file
+  joined 48 s in asked for `SegmentContainer=ts`, Emby copied the video and
+  converted DTS to AAC, and the picture came up in 1.6 s. Sync after the join
+  is not yet checked on a Roku.
 
 ## How it fits the app
 
